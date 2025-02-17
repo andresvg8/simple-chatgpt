@@ -1,0 +1,21 @@
+package com.andresvg.simple_chatgpt.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestClient;
+
+@Configuration
+public class OpenAPIConfiguration
+{
+    @Value("${openapi.api.key}")
+    private String apiUrl;
+
+    @Bean
+    public RestClient restClient()
+    {
+        return RestClient.builder()
+                .baseUrl(apiUrl)
+                .build();
+    }
+}
